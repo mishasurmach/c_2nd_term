@@ -72,7 +72,7 @@ void add_certain_element(List *spisok, int a){
 
    List *t1 = t -> next;
    while (t1 -> x != 0){
-      if (t -> x < p -> x && p -> x <= t1 -> x){  // вставка в середину
+      if (t -> x < p -> x && p -> x <= t1 -> x){ 
          t -> next = p;
          p -> next = t1;
          return;
@@ -80,7 +80,7 @@ void add_certain_element(List *spisok, int a){
       t = t1;
       t1 = t1 -> next;
    }
-   t -> next = p; // добавляем в конец списка
+   t -> next = p; 
    p -> next = 0;
 }
 
