@@ -85,9 +85,6 @@ void add_certain_element(List *spisok, int a){
 }
 
 void remove_certain_element(List *spisok, int a){
-   if(spisok == 0){
-      return;
-   }
    List *t = spisok;
    if(t -> x == a){
       spisok = t -> next;
