@@ -8,7 +8,7 @@ struct node{
 node* make_node(int digit){
   node* branch = new node;
   branch -> digit = digit;
-  branch -> height = 1; 
+  branch -> height = 1;
   branch -> left = nullptr;
   branch -> right = nullptr;
   return branch;
@@ -58,7 +58,7 @@ node *insert(node* branch, int digit){
     return make_node(digit);
 
   if (digit == branch -> digit){
-    return branch;    
+    return branch;
   }
   else if (digit < branch -> digit){
     branch -> left = insert(branch -> left, digit);
@@ -110,10 +110,42 @@ void output(node *num){
     }
 }
 
+void make_space(int a, int b){
+    for (int i = 0; i < a - b; i++)
+        std::cout << " ";
+}
+
+void defl(node *root, int level, int p){
+    int tree_height = return_height(root);
+
+    if (root == nullptr){
+        make_space(p, level);
+        return;
+    }
+    if (level == 0){
+        make_space(tree_height, level);
+        std::cout << root -> digit << " ";
+    }
+    else if (level){
+        defl(root->left, level - 1, p);
+        make_space(tree_height, level);
+        defl(root->right, level - 1, p);
+    }
+}
+
+void outreach(node *root){
+    int tree_height = return_height(root);
+    for(int i = 0; i < tree_height; i++){
+        make_space(tree_height, i);
+        defl(root, i, i);
+        std::cout << std::endl;
+    }
+}
+
 int main(){
   node *root = nullptr;
   input(root);
-  output(root);
+  outreach(root);
   
   return 0;
 }
